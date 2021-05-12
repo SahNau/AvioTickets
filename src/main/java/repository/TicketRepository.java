@@ -1,14 +1,14 @@
 package repository;
 
-import domain.InfoTickets;
+import domain.InfoTicket;
 
 
-public class TicketsRepository {
-    private InfoTickets[] items = new InfoTickets[0];
+public class TicketRepository {
+    private InfoTicket[] items = new InfoTicket[0];
 
-    public void save(InfoTickets item) {
+    public void save(InfoTicket item) {
         int length = items.length + 1;
-        InfoTickets[] tmp = new InfoTickets[length];
+        InfoTicket[] tmp = new InfoTicket[length];
         System.arraycopy(items, 0, tmp, 0, items.length);
         int lastIndex = tmp.length - 1;
         tmp[lastIndex] = item;
@@ -16,13 +16,13 @@ public class TicketsRepository {
     }
 
     // выдать все объекты
-    public InfoTickets[] findAll() {
+    public InfoTicket[] findAll() {
         return items;
     }
 
     // найти по id
-    public InfoTickets findById(int id) {
-        for (InfoTickets item : items) {
+    public InfoTicket findById(int id) {
+        for (InfoTicket item : items) {
             if (item.getId() == id) {
                 return item;
             }
@@ -34,9 +34,9 @@ public class TicketsRepository {
     // удалить по id
     public void removeById(int id) {
         int length = items.length - 1;
-        InfoTickets[] tmp = new InfoTickets[length];
+        InfoTicket[] tmp = new InfoTicket[length];
         int index = 0;
-        for (InfoTickets item : items) {
+        for (InfoTicket item : items) {
             if (item.getId() != id) {
                 tmp[index] = item;
                 index++;

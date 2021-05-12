@@ -1,29 +1,29 @@
 package manager;
 
-import domain.InfoTickets;
-import repository.TicketsRepository;
+import domain.InfoTicket;
+import repository.TicketRepository;
 
 import java.util.Arrays;
 
 public class TicketManager {
-    private TicketsRepository repository;
+    private TicketRepository repository;
 
     public TicketManager() {
     }
 
-    public void add(InfoTickets infoTickets) {
-        repository.save(infoTickets);
+    public void add(InfoTicket infoTicket) {
+        repository.save(infoTicket);
     }
 
-    public TicketManager(TicketsRepository repository) {
+    public TicketManager(TicketRepository repository) {
         this.repository = repository;
     }
 
-    public InfoTickets[] findAll(String from, String to) {
-        InfoTickets[] result = new InfoTickets[0];
-        for (InfoTickets infoTicket : repository.findAll()) {
+    public InfoTicket[] findAll(String from, String to) {
+        InfoTicket[] result = new InfoTicket[0];
+        for (InfoTicket infoTicket : repository.findAll()) {
             if (infoTicket.matches(from, to)) {
-                InfoTickets[] tmp = new InfoTickets[result.length + 1];
+                InfoTicket[] tmp = new InfoTicket[result.length + 1];
                 System.arraycopy(result, 0, tmp, 0, result.length);
                 tmp[tmp.length - 1] = infoTicket;
                 result = tmp;
